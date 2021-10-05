@@ -7,7 +7,7 @@ def get_user_input
   generations = gets.chomp.to_i
   return grid_size, generations
 end
-# - load a population from a file
+# - load a population from a file?
 
 # Let's use and helping edge that is always 0, to avoid having to adjust
 # the neighbour_calculation function
@@ -21,9 +21,7 @@ def setup_grid_with_edge(grid_size)
 end
 
 def calculate_next_generation(grid, grid_size, position)
-  # Determine where we are in the grid.
-  row = (position / grid_size) + 1
-  column = (position % grid_size) + 1
+  row, column = determine_location(position, grid_size)
   number_of_neighbours = calculate_neighbours(grid, row, column)
   # Move further, if we did not reach the end of the grid.
   unless position == 0
@@ -32,6 +30,12 @@ def calculate_next_generation(grid, grid_size, position)
   # Update the cell
   grid[row][column] = dead_or_alive(grid[row][column], number_of_neighbours)
   return grid
+end
+
+def determine_location(position, grid_size)
+  row = (position / grid_size) + 1
+  column = (position % grid_size) + 1
+  return row, column
 end
 
 def calculate_neighbours(grid, row, column)
