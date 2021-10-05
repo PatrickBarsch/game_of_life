@@ -55,7 +55,7 @@ def print_grid (grid, grid_size)
   print_what = {0 => "-", 1 => "x"}
   grid[1..grid_size].each do |row|
     row_translated = row.map{ |element| print_what[element]}
-    print "#{row_translated.join("")} \n"
+    print "#{row_translated.join(" ")} \n"
   end
   print "\n"
   sleep(0.5)
