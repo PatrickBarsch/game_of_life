@@ -61,6 +61,7 @@ generations.times do
   grid = calculate_next_generation(grid, grid_size, end_position)
   print_grid(grid, grid_size)
   print "\n"
+  sleep(0.5)
 end
 
 # Output:
