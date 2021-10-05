@@ -23,6 +23,12 @@ print grid
 
 # Run the game:
 # - calculate the next generation for the defined number of iterations
+def calculate_next_generation(grid, grid_size, generation)
+  # calculate the value for all the neighbours
+  # check if we reached the end of the grid
+  # --> if not, call this function recursively
+  # switch the cell based on its own and its neighbours status
+end
 
 # Output:
 # - print the grid to stdout
