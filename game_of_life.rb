@@ -52,18 +52,24 @@ def print_grid (grid, grid_size)
     row_translated = row.map{ |element| print_what[element]}
     print "#{row_translated.join("")} \n"
   end
+  print "\n"
+  sleep(0.5)
+end
+
+def print_game_over(how_long)
+  puts "Sorry, seems like they all died..."
+  puts "But they made it #{how_long} generations."
+  puts "Better luck next time."
 end
 
 grid_size, generations = get_user_input
 end_position = grid_size**2 - 1
 grid = setup_grid_with_edge(grid_size)
-generations.times do
+generations.times do |time|
   grid = calculate_next_generation(grid, grid_size, end_position)
+  if grid.map{|row| row.sum}.sum == 0
+    print_game_over(times)
+    break
+  end
   print_grid(grid, grid_size)
-  print "\n"
-  sleep(0.5)
 end
-
-# Output:
-# - print the grid to stdout
-# - wait for the pre-defined time
