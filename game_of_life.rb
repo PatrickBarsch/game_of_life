@@ -46,16 +46,20 @@ def calculate_next_generation(grid, grid_size, position)
   return grid
 end
 
-# grid_size = 3
-# generation = 3
+def print_grid (grid, grid_size)
+  print_what = {0 => "-", 1 => "x"}
+  grid[1..grid_size].each do |row|
+    row_translated = row.map{ |element| print_what[element]}
+    print "#{row_translated.join("")} \n"
+  end
+end
+
 grid_size, generations = get_user_input
 end_position = grid_size**2 - 1
 grid = setup_grid_with_edge(grid_size)
 generations.times do
   grid = calculate_next_generation(grid, grid_size, end_position)
-  grid[1..grid_size].each do |row|
-    print "#{row[1..grid_size]} \n"
-  end
+  print_grid(grid, grid_size)
   print "\n"
 end
 
