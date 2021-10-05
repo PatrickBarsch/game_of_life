@@ -48,8 +48,8 @@ grid = setup_grid_with_edge(grid_size, input)
 generations = 3
 generations.times do
   grid = calculate_next_generation(grid, grid_size, end_position)
-  grid.each do |row|
-    print "#{row} \n"
+  grid[1..grid_size].each do |row|
+    print "#{row[1..grid_size]} \n"
   end
   print "\n"
 end
