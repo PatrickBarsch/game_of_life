@@ -1,8 +1,13 @@
 # Game of life
 
 # Input:
-# - get some input from the user through the terminal (grid size, number of iterations, time between iterations)
-# - generate a random population
+def get_user_input
+  puts "How big do you want your grid (square)?"
+  grid_size = gets.chomp.to_i
+  puts "How long do you want to play ideally?"
+  generations = gets.chomp.to_i
+  return grid_size, generations
+end
 # - load a population from a file
 
 # let's mock this for now
@@ -41,11 +46,11 @@ def calculate_next_generation(grid, grid_size, position)
   return grid
 end
 
-grid_size = 3
-generation = 3
+# grid_size = 3
+# generation = 3
+grid_size, generations = get_user_input
 end_position = grid_size**2 - 1
 grid = setup_grid_with_edge(grid_size)
-generations = 3
 generations.times do
   grid = calculate_next_generation(grid, grid_size, end_position)
   grid[1..grid_size].each do |row|
