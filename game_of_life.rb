@@ -7,7 +7,8 @@
 
 # let's mock this for now
 
-def setup_grid_with_edge(grid_size, input)
+def setup_grid_with_edge(grid_size)
+  input = Array.new(grid_size) { Array.new(grid_size,rand(2)) }
   grid = Array.new(grid_size + 2) { Array.new(grid_size + 2, 0) }
   grid[1..grid_size].each_with_index do |row, id| 
     row[1..grid_size] = input[id]
@@ -43,8 +44,7 @@ end
 grid_size = 3
 generation = 3
 end_position = grid_size**2 - 1
-input = [[0,1,0], [1,1,1], [0,1,0]]
-grid = setup_grid_with_edge(grid_size, input)
+grid = setup_grid_with_edge(grid_size)
 generations = 3
 generations.times do
   grid = calculate_next_generation(grid, grid_size, end_position)
