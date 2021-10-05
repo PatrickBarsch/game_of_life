@@ -6,4 +6,3 @@ I try to implement some things I learned about traversing 2D-Data structures and
 ## How to run it:
 ``` shell
 ruby game_of_life.rb
-´´´
