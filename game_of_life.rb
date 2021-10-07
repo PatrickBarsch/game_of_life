@@ -12,7 +12,7 @@ end
 # Let's use and helping edge that is always 0, to avoid having to adjust
 # the neighbour_calculation function
 def setup_grid_with_edge(grid_size)
-  input = Array.new(grid_size) { Array.new(grid_size,rand(2)) }
+  input = Array.new(grid_size) { Array.new(grid_size) { rand(2) } } # not quite random
   grid = Array.new(grid_size + 2) { Array.new(grid_size + 2, 0) }
   grid[1..grid_size].each_with_index do |row, id| 
     row[1..grid_size] = input[id]
@@ -76,10 +76,10 @@ grid_size, generations = get_user_input
 end_position = grid_size**2 - 1
 grid = setup_grid_with_edge(grid_size)
 generations.times do |time|
+  print_grid(grid, grid_size)
   grid = calculate_next_generation(grid, grid_size, end_position)
   if grid.map{|row| row.sum}.sum == 0
     print_game_over(time)
     break
   end
-  print_grid(grid, grid_size)
 end
